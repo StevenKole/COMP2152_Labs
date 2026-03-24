@@ -31,9 +31,9 @@ class SimpleScanner:
     def scan_port(self, port):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout()
-            result = socket.connect_ex((self.target, port))
-            if result == e:
+            sock.settimeout(1)
+            result = sock.connect_ex((self.target, port))
+            if result == 0:
                 print(f"    Port {port} OPEN")
                 self.open_ports.append(port)
                 return True
